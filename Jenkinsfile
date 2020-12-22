@@ -4,11 +4,17 @@ pipeline {
         pollSCM('* * * * *')
         upstream(upstreamProjects: 'proj1', threshold: hudson.model.Result.SUCCESS)
     }
+    environment {
+        JAVA_VERSION ='1.8'
+        GITHUB_CREDS= credentials('github');
+    }
     stages {
         stage('compile'){
             steps{
-                echo "Hello World"
-                exit 1
+                sh 'echo Hello World'
+                sh 'echo $JAVA_VERSION'
+                sh 'echo GITHUB_USER : $GITHUB_CREDS'
+                
             }
         }
         stage('Test'){
