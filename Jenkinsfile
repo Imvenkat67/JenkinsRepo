@@ -7,6 +7,14 @@ pipeline{
             }
         }
     }
-
+    
+    }
+    post: {
+        always {
+            sh 'echo build completed'
+        }
+        changed {
+            sh 'echo build changed'
+        }
     }
 }
