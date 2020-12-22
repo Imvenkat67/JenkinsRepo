@@ -4,6 +4,9 @@ pipeline {
         pollSCM('* * * * *')
         upstream(upstreamProjects: 'proj1', threshold: hudson.model.Result.SUCCESS)
     }
+    parameters {
+        string( name: 'deploy', value: 'delpoy1', description:'')
+    }
     options { 
         buildDiscarder(logRotator(numToKeepStr: '2')) 
         disableConcurrentBuilds()
@@ -20,7 +23,7 @@ pipeline {
                 sh 'echo Hello World'
                 sh 'echo $JAVA_VERSION'
                 sh 'echo GITHUB_USER : $GITHUB_CREDS'
-                sleep 5                
+                              
             }
         }
         stage('Test'){
