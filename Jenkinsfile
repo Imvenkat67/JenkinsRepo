@@ -7,6 +7,12 @@ pipeline {
         stage('compile'){
             steps{
                 echo "Hello World"
+                exit 1
+            }
+        }
+        stage('Test'){
+            steps{
+                echo "Test"
             }
         }
     }
@@ -17,6 +23,15 @@ pipeline {
         }
         changed {
             sh 'echo build changed'
+        }
+        fixed{
+             sh 'echo wohha build is not triggerred'
+        }
+        failure{
+             sh 'echo failed for a reason'
+        }
+        success{
+            sh 'echo Project success'
         }
     }
 }
