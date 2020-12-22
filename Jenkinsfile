@@ -5,7 +5,7 @@ pipeline {
         upstream(upstreamProjects: 'proj1', threshold: hudson.model.Result.SUCCESS)
     }
     parameters {
-        string( name: 'deploy', value: 'delpoy1', description:'')
+        string( name: 'deploy', defaultValue: 'delpoy1', description:'')
     }
     options { 
         buildDiscarder(logRotator(numToKeepStr: '2')) 
