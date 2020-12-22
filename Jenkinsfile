@@ -6,6 +6,7 @@ pipeline {
     }
     parameters {
         string( name: 'deploy', defaultValue: 'delpoy1', description:'')
+        choice(name: 'CHOICES', choices: ['QA', 'PROD', 'DEV'], description: '')
     }
     options { 
         buildDiscarder(logRotator(numToKeepStr: '2')) 
