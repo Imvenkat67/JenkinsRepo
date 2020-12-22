@@ -55,8 +55,23 @@ pipeline {
                 }
             }
             steps {
-               sh 'echo Hello, ${PERSON}'
+               //sh 'echo Hello, ${PERSON}'
+               script {
+                   if(env.JAVA_VERSION=='1.8'){
+                       sh 'echo *************'
+                   }else {
+                       sh 'echo ^^^^^^^^^^^^^^^^^^'
+                   }
+               }
             }    
+        }
+        stage ('experimental'){
+            when {
+                branch 'master'
+            }
+            steps {
+                sh 'echo $$$$$$'
+            }
         }
         stage('compile'){
             steps{
