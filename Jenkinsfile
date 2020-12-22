@@ -8,6 +8,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '2')) 
         disableConcurrentBuilds()
         retry(2)
+        timeout(time: 2, unit: 'SECONDS')
     }    
     environment {
         JAVA_VERSION ='1.8'
@@ -19,8 +20,7 @@ pipeline {
                 sh 'echo Hello World'
                 sh 'echo $JAVA_VERSION'
                 sh 'echo GITHUB_USER : $GITHUB_CREDS'
-                exit 1
-                
+                sleep 5                
             }
         }
         stage('Test'){
