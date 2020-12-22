@@ -1,10 +1,10 @@
-pipeline{
+pipeline {
     agent any
     triggers {
-        cron("* * * * * *")
+        cron('* * * * * *')
     }
     stages {
-        stage ('compile'){
+        stage('compile'){
             steps{
                 echo "Hello World"
             }
