@@ -11,7 +11,7 @@ pipeline{
         }
     }
     
-    }
+    
     post: {
         always {
             sh 'echo build completed'
