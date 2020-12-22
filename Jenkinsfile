@@ -18,8 +18,14 @@ pipeline {
             }
         }
         stage('Test'){
+          environment {
+           JAVA_VERSION ='1.7'
+           GITHUB_CREDS= credentials('github');
+    }
             steps{
                 echo "Test"
+                sh 'echo $JAVA_VERSION'
+                sh 'echo $GITHUB_CREDS'
             }
         }
     }
